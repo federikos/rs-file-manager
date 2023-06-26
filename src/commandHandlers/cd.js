@@ -6,10 +6,5 @@ export function cdHandler(args) {
     return;
   }
 
-  console.log(args[0]);
-  try {
-    process.chdir(args[0]);
-  } catch (e) {
-    console.log(e);
-  }
+  process.chdir(args[0]);
 }

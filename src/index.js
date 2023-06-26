@@ -6,13 +6,19 @@ import { exitHandler } from './commandHandlers/exit.js';
 import { upHandler } from './commandHandlers/up.js';
 import { cdHandler } from './commandHandlers/cd.js';
 import { lsHandler } from './commandHandlers/ls.js';
+import { catHandler } from './commandHandlers/cat.js';
+import { addHandler } from './commandHandlers/add.js';
+import { rnHandler } from './commandHandlers/rn.js';
+import { cpHandler } from './commandHandlers/cp.js';
+import { mvHandler } from './commandHandlers/mv.js';
+import { rmHandler } from './commandHandlers/rm.js';
 
 const username = parseUsername(process.argv[2]);
 const rl = readline.createInterface(stdin, stdout);
 printWelcome(username);
 printCWD();
 
-function processInput(input) {
+async function processInput(input) {
   const { command, args } = parseInput(input);
 
   try {
@@ -27,7 +33,25 @@ function processInput(input) {
         cdHandler(args);
         break;
       case 'ls':
-        lsHandler(args);
+        await lsHandler(args);
+        break;
+      case 'cat':
+        catHandler(args);
+        break;
+      case 'add':
+        await addHandler(args);
+        break;
+      case 'rn':
+        rnHandler(args);
+        break;
+      case 'cp':
+        cpHandler(args);
+        break;
+      case 'mv':
+        mvHandler(args);
+        break;
+      case 'rm':
+        rmHandler(args);
         break;
       default:
         console.log(INVALID_INPUT);
