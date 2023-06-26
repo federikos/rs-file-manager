@@ -5,6 +5,7 @@ import { INVALID_INPUT, OPERATION_FAILED } from './consts.js';
 import { exitHandler } from './commandHandlers/exit.js';
 import { upHandler } from './commandHandlers/up.js';
 import { cdHandler } from './commandHandlers/cd.js';
+import { lsHandler } from './commandHandlers/ls.js';
 
 const username = parseUsername(process.argv[2]);
 const rl = readline.createInterface(stdin, stdout);
@@ -24,6 +25,9 @@ function processInput(input) {
         break;
       case 'cd':
         cdHandler(args);
+        break;
+      case 'ls':
+        lsHandler(args);
         break;
       default:
         console.log(INVALID_INPUT);
