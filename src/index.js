@@ -13,6 +13,7 @@ import { cpHandler } from './commandHandlers/cp.js';
 import { mvHandler } from './commandHandlers/mv.js';
 import { rmHandler } from './commandHandlers/rm.js';
 import { osHandler } from './commandHandlers/os.js';
+import { hashHandler } from './commandHandlers/hashHandler.js';
 
 const username = parseUsername(process.argv[2]);
 const rl = readline.createInterface(stdin, stdout);
@@ -56,6 +57,13 @@ async function processInput(input) {
         break;
       case 'os':
         osHandler(args);
+        break;
+      case 'hash':
+        await hashHandler(args)
+        break;
+      case 'compress':
+        break;
+      case 'decompress':
         break;
       default:
         console.log(INVALID_INPUT);
