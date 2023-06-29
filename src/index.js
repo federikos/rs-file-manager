@@ -12,6 +12,7 @@ import { rnHandler } from './commandHandlers/rn.js';
 import { cpHandler } from './commandHandlers/cp.js';
 import { mvHandler } from './commandHandlers/mv.js';
 import { rmHandler } from './commandHandlers/rm.js';
+import { osHandler } from './commandHandlers/os.js';
 
 const username = parseUsername(process.argv[2]);
 const rl = readline.createInterface(stdin, stdout);
@@ -52,6 +53,9 @@ async function processInput(input) {
         break;
       case 'rm':
         rmHandler(args);
+        break;
+      case 'os':
+        osHandler(args);
         break;
       default:
         console.log(INVALID_INPUT);
